@@ -1,5 +1,12 @@
 L.RegularGridCluster.include({
   _scaleOperations: {
+    key: function key(cluster, value, min, max, noInts, thresholds, range) {
+      var output = range[value];
+      if (!output)
+        output = "#000000";
+
+      return output;
+    },
     size: (cluster, value, min, max, noInts, thresholds, range) => {
       const diff = max - min;
       let interval = noInts - 1;
