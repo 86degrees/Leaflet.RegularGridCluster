@@ -566,11 +566,11 @@ L.RegularGridCluster = L.FeatureGroup.extend({
     const scale = rule.scale;
     const range = rule.range;
 
-    if (range.length === 1) {
+    if (range.length === 1 || Object.keys(range).length === 1) {
       this._zones.forEach(zone => {
         zone.options[featureType][option] = range[0];
       });
-    } else if (range.length > 1) {
+    } else if (range.length > 1 || Object.keys(range).length > 1) {
       const values = this._zoneValues(true).sort((a, b) => a - b);
 
       let noInts = range.length;
@@ -583,7 +583,7 @@ L.RegularGridCluster = L.FeatureGroup.extend({
 
       const thresholds = [];
 
-      if (scale != 'size') {
+      if (scale != 'size' && scale != 'key') {
         const qLen = Math.floor(values.length / noInts);
 
         for (let i = 1; i != noInts; i++) {
