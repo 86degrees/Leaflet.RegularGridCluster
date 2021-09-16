@@ -98,7 +98,7 @@ L.RegularGridCluster = L.FeatureGroup.extend({
   },
 
   _addPane(paneName, zIndex) {
-    if (!map.getPane(paneName)) {
+    if (!this._map.getPane(paneName)) {
       this._map.createPane(paneName);
       this._map.getPane(paneName).style.zIndex = zIndex;
     }
